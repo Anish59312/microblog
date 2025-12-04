@@ -1,0 +1,7 @@
+{
+    "chat.disableAIFeatures": true,
+    "html.autoClosingTags": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveWorkspaceFilesOnly": true,
+    "files.autoSaveWhenNoErrors": false
+}
