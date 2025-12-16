@@ -1,0 +1,51 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-12-16 12:50+0530\n"
+"PO-Revision-Date: 2025-12-16 11:51+0530\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/forms.py:8
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: app/routes.py:17
+msgid "Your Translation is working"
+msgstr "Tu traducción está funcionando"
+
+#: app/routes.py:132
+#, python-brace-format
+msgid "User %{username}s not found"
+msgstr "Usuario %{username}s no encontrado"
+
+#: app/templates/404.html:4
+msgid "File Not Found"
+msgstr "Archivo no encontrado"
+
+#: app/templates/404.html:5
+msgid "Back"
+msgstr "Volver"
+
+#: app/templates/_post.html:14
+#, python-format
+msgid "%(username)s said %(when)s"
+msgstr "%(username)s dijo %(when)s"
+
+#: app/templates/index.html:4
+#, python-format
+msgid "hi, %(username)s"
+msgstr "hola, %(username)s"
+

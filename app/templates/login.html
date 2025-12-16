@@ -6,7 +6,7 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
+            {{ form.username(size=32, placeholder='susan') }}<br>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{error}}]</span>
             {% endfor %}
@@ -21,4 +21,7 @@
         <p>{{ form.remember_me() }} {{ form.remember_me.label }} </p>
         <p>{{ form.submit() }}</p>
     </form>
+    <p> New User? <a href="{{url_for('register')}}" >Click to Register!!</a></p>
+    <p> Forgot your Password? <a href="{{url_for('reset_password_request')}}" >Click to Reset Password</a></p>
+
 {% endblock %}

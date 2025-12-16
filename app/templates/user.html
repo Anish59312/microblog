@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <table>
+        <tr valign="top">
+            <td><img src="{{user.avatar(128)}}"></td>
+            <td>
+                <h1>User: {{user.username}}</h1>
+                <p> {% if user.about_me %}
+                    About Me: {{user.about_me}}
+                {% endif %}
+                </p>
+                <p>
+                {% if user.last_seen %}
+                   Last seen on: <span class="text-success">{{ moment(user.last_seen).calendar() }} </span>
+                {% endif %}
+                </p>
+                <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
+                {% if user == current_user %}
+                <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+                {% elif not current_user.is_following(user) %}
+                <p>
+                    <form action="{{ url_for('follow',username=user.username) }}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value='Follow') }}
+                    </form>
+                </p>
+                {% else %}
+                <p>
+                    <form action="{{ url_for('unfollow',username=user.username)}}" method="post">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(value='Unfollow') }}
+                    </form>
+                </p>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+
+    {% for post in posts %}
+        {% include "_post.html" %}
+    {% endfor %}
+ 
+    {% if prev_url %}
+    <a href="{{prev_url}}">Newer Posts                            </a>
+    &nbsp;
+    {% endif %}
+      {% if next_url %}
+    <a href="{{next_url}}">Older Posts</a>
+    {% endif %}
+
+
+{% endblock %}
