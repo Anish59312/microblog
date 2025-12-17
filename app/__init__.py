@@ -46,7 +46,9 @@ def create_app(config_class=Config):
     app.register_blueprint(main_bp)
 
 
-    if not app.debug:
+    if not app.debug and not app.testing:
+        #  run this command when in production
+        # aiosmtpd -n -c aiosmtpd.handlers.Debugging -l localhost:8025
         
         # SETUP MAIL
         if app.config['MAIL_SERVER']:
@@ -82,5 +84,7 @@ def create_app(config_class=Config):
 
         app.logger.setLevel(logging.INFO)
         app.logger.info('Microblog startup')
-    
+
+
     return app
+
