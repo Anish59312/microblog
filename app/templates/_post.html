@@ -21,13 +21,12 @@
 
       {% if post.language and post.language != g.locale %}
       <br><br>
-      <!-- TODO: change this stub to have dynamic value for post.language and g.locale -->
       <span id="translation{{ post.id }}">
           <a href="javascript:translate(
                       '#post{{ post.id }}',
                       '#translation{{ post.id }}',
-                      'en',
-                      'es');">{{ _('Translate') }}</a>
+                      '{{post.langauge}}',
+                      '{{g.locale}}');">{{ _('Translate') }}</a>
       </span>      
       {% endif %}
     </td>

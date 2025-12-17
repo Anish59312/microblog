@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-16 12:50+0530\n"
-"PO-Revision-Date: 2025-12-16 11:51+0530\n"
+"POT-Creation-Date: 2025-12-17 18:01+0530\n"
+"PO-Revision-Date: 2025-12-17 17:59+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
 "Language-Team: es <LL@li.org>\n"
@@ -18,34 +18,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/forms.py:8
+#: app/__init__.py:18
+msgid "please login to access this page"
+msgstr "por favor inicia sesión para acceder a esta página"
+
+#: app/translate.py:11 app/translate.py:21
+msgid "Error: the translation service is down"
+msgstr "Error: el servicio de traducción no está disponible"
+
+#: app/auth/emails.py:8
+msgid "[MICROBLOG] Reset Your Password"
+msgstr "[MICROBLOG] Restablece tu contraseña"
+
+#: app/auth/forms.py:8 app/auth/forms.py:15
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: app/routes.py:17
+#: app/auth/forms.py:9 app/auth/forms.py:17
+msgid "Password"
+msgstr "Contraseña"
+
+#: app/auth/forms.py:10
+msgid "Remember Me"
+msgstr "Recuérdame"
+
+#: app/auth/forms.py:11
+msgid "Sign In"
+msgstr "Iniciar sesión"
+
+#: app/auth/forms.py:16
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: app/auth/forms.py:18
+msgid "Reenter Password"
+msgstr "Vuelve a ingresar la contraseña"
+
+#: app/auth/forms.py:19
+msgid "Sign Up"
+msgstr "Registrarse"
+
+#: app/main/routes.py:16
 msgid "Your Translation is working"
 msgstr "Tu traducción está funcionando"
 
-#: app/routes.py:132
+#: app/main/routes.py:97
 #, python-brace-format
 msgid "User %{username}s not found"
 msgstr "Usuario %{username}s no encontrado"
-
-#: app/templates/404.html:4
-msgid "File Not Found"
-msgstr "Archivo no encontrado"
-
-#: app/templates/404.html:5
-msgid "Back"
-msgstr "Volver"
 
 #: app/templates/_post.html:14
 #, python-format
 msgid "%(username)s said %(when)s"
 msgstr "%(username)s dijo %(when)s"
 
+#: app/templates/_post.html:29
+msgid "Translate"
+msgstr "Traducir"
+
+#: app/templates/base.html:84
+msgid "Error: Could not contact server."
+msgstr "Error: no se pudo contactar con el servidor."
+
 #: app/templates/index.html:4
 #, python-format
 msgid "hi, %(username)s"
 msgstr "hola, %(username)s"
+
+#: app/templates/errors/404.html:4
+msgid "File Not Found"
+msgstr "Archivo no encontrado"
+
+#: app/templates/errors/404.html:5
+msgid "Back"
+msgstr "Volver"
 
