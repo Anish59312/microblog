@@ -5,7 +5,7 @@ from flask_login import current_user, login_required
 from datetime import datetime, timezone
 from flask_babel import get_locale, _
 from langdetect import detect, LangDetectException
-from app.translate import translate
+from app.translate import translate_api
 from app.main import bp
 from app.main.forms import EmptyForm, PostForm, EditProfileForm
 
@@ -130,6 +130,6 @@ def unfollow(username):
 @bp.route('/translate', methods=['POST'])
 @login_required
 def translate_text():
-    return jsonify({'text': translate(request.form['text'],
+    return jsonify({'text': translate_api(request.form['text'],
                                            request.form['source_language'],
                                            request.form['dest_language'])})

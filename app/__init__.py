@@ -1,6 +1,6 @@
 from logging.handlers import RotatingFileHandler, SMTPHandler
 import os
-from flask import Flask, request
+from flask import Flask, request, current_app
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -11,30 +11,47 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
 
-def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-app = Flask(__name__)
-app.config.from_object(Config)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-login = LoginManager(app)
+db = SQLAlchemy()
+migrate = Migrate()
+login = LoginManager()
 login.login_view = 'login'
-mail = Mail(app)
-bootstrap = Bootstrap(app)
-moment = Moment(app)
-babel = Babel(app, locale_selector=get_locale)
+login.login_message = _l('please login to access this page')
+mail = Mail()
+bootstrap = Bootstrap()
+moment = Moment()
+babel = Babel()
+
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(config_class)
+
+    def get_locale():
+        return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+    db.init_app(app)
+    migrate.init_app(app, db)
+    login.init_app(app)
+    mail.init_app(app)
+    bootstrap.init_app(app)
+    moment.init_app(app)
+    babel.init_app(app, locale_selector=get_locale)
+
+    from app.errors import bp as errors_bp
+    app.register_blueprint(errors_bp)
+
+    from app.auth import bp as auth_bp
+    app.register_blueprint(auth_bp, url_prefix='/auth')
+
+    from app.main import bp as main_bp
+    app.register_blueprint(main_bp)
 
 
-if not app.debug:
-    if app.config['MAIL_SERVER'] is not None:
-        #run this mail server in seperate terminal
-        # aiosmtpd -n -c aiosmtpd.handlers.Debugging -l localhost:8025
-
-        auth = None
-        if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
+    if not app.debug:
+        
+        # SETUP MAIL
+        if app.config['MAIL_SERVER']:
             auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
-
+        
         secure = None
         if app.config['MAIL_USE_TLS']:
             secure = ()
@@ -53,28 +70,17 @@ if not app.debug:
             msg.html='<h1>hello</h1>'
             mail.send(msg)
 
-    if not os.path.exists('logs'):
-        os.mkdir('logs')
+        # SETUP LOGGING
 
-    file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240, backupCount=10)
-    file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
-    file_handler.setLevel(logging.ERROR)
-    app.logger.addHandler(file_handler)
+        if not os.path.exists('logs'):
+            os.mkdir('logs')
 
-    app.logger.setLevel(logging.INFO)
-    app.logger.info('Microblog startup')
+        file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240, backupCount=10)
+        file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+        file_handler.setLevel(logging.ERROR)
+        app.logger.addHandler(file_handler)
 
-from app.errors import bp as errors_bp
-app.register_blueprint(errors_bp)
-
-
-from app.auth import bp as auth_bp
-app.register_blueprint(auth_bp, url_prefix='/auth')
-
-
-from app.main import bp as main_bp
-app.register_blueprint(main_bp)
-
-from app import models, cli  # this line stops circular imports 
-
-
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('Microblog startup')
+    
+    return app
