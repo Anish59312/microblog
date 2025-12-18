@@ -1,6 +1,6 @@
 from logging.handlers import RotatingFileHandler, SMTPHandler
 import os
-from flask import Flask, request, current_app
+from flask import Flask, request
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -10,11 +10,12 @@ from flask_mail import Mail, Message
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
+from elasticsearch import Elasticsearch
 
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
-login.login_view = 'login'
+login.login_view = 'auth.login'
 login.login_message = _l('please login to access this page')
 mail = Mail()
 bootstrap = Bootstrap()
@@ -35,6 +36,7 @@ def create_app(config_class=Config):
     bootstrap.init_app(app)
     moment.init_app(app)
     babel.init_app(app, locale_selector=get_locale)
+    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']], basic_auth=('elastic', 'ciabvWlGc8BxdOeH4*vv'), verify_certs=False) if app.config['ELASTICSEARCH_URL'] else None
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
@@ -54,23 +56,23 @@ def create_app(config_class=Config):
         if app.config['MAIL_SERVER']:
             auth = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
         
-        secure = None
-        if app.config['MAIL_USE_TLS']:
-            secure = ()
+            secure = None
+            if app.config['MAIL_USE_TLS']:
+                secure = ()
 
-        mail_handler = SMTPHandler(
-            mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-            fromaddr= 'no-reply@' + app.config['MAIL_SERVER'],
-            toaddrs=app.config['ADMINS'], subject='Microblog Failure',
-            credentials=auth, secure=secure)
-        mail_handler.setLevel(logging.ERROR)
-        app.logger.addHandler(mail_handler)
+            mail_handler = SMTPHandler(
+                mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
+                fromaddr= 'no-reply@' + app.config['MAIL_SERVER'],
+                toaddrs=app.config['ADMINS'], subject='Microblog Failure',
+                credentials=auth, secure=secure)
+            mail_handler.setLevel(logging.ERROR)
+            app.logger.addHandler(mail_handler)
         
-        with app.app_context():
-            msg = Message('test subject', sender=app.config['ADMINS'][0], recipients=['test@localhost'])
-            msg.body='test'
-            msg.html='<h1>hello</h1>'
-            mail.send(msg)
+            with app.app_context():
+                msg = Message('test mail', sender=app.config['ADMINS'][0], recipients=['test@localhost'])
+                msg.body='your mailing system is started'
+                msg.html='<h1>congratulations</h1>'
+                mail.send(msg)
 
         # SETUP LOGGING
 

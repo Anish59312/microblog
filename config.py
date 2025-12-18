@@ -20,8 +20,9 @@ class Config(object):
     POSTS_PER_PAGE = 3
 
     LANGUAGES=['en','es', 'hi']
-
     TRANSLATION_KEY_JSON = './translate_service_account.json'
+
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
     
 
     
