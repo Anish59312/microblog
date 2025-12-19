@@ -7,7 +7,17 @@ from flask_babel import get_locale, _
 from langdetect import detect, LangDetectException
 from app.translate import translate_api
 from app.main import bp
-from app.main.forms import EmptyForm, PostForm, EditProfileForm
+from app.main.forms import EmptyForm, PostForm, EditProfileForm, SearchForm
+from app.search import query_index
+
+@bp.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.now(timezone.utc)
+        db.session.commit()
+        g.search_form = SearchForm()
+    
+    g.locale = str(get_locale())
 
 @bp.route('/')
 @bp.route('/index', methods=["GET", "POST"])
@@ -62,14 +72,6 @@ def user(username):
         if posts.has_prev else None
     form = EmptyForm()
     return render_template('user.html',user=user, posts=posts, form=form, next_url=next_url, prev_url=prev_url)
-
-@bp.before_request
-def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.now(timezone.utc)
-        db.session.commit()
-    
-    g.locale = str(get_locale())
 
 @bp.route('/edit_profile', methods=["GET", "POST"])
 def edit_profile():
@@ -133,3 +135,21 @@ def translate_text():
     return jsonify({'text': translate_api(request.form['text'],
                                            request.form['source_language'],
                                            request.form['dest_language'])})
+
+@bp.route('/search')
+@login_required
+def search():
+    if not g.search_form.validate():
+        print("_______________________________", g.search_form.q.data, g.search_form.validate())
+        return redirect(url_for('main.explore'))
+    page = request.args.get('page', 1, type=int)
+    query, total = Post.search(g.search_form.q.data, page,
+                               current_app.config['POSTS_PER_PAGE'])
+    
+    posts = query.all()
+
+    next_url = url_for('main.search', q=g.search_form.q.data, page=page+1) if total > page * current_app.config['POSTS_PER_PAGE'] else None
+    prev_url = url_for('main.search', q=g.search_form.q.data, page=page-1) if page > 1 else None
+
+    return render_template('search.html', title=_('Search'), posts=posts, next_url=next_url, prev_url=prev_url)  
+  
