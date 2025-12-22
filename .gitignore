@@ -2,3 +2,4 @@ venv/**
 .vscode/**
 __pycache__/**
 app/__pycache__/**
+./translate_service_account.json
