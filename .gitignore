@@ -1,5 +1,14 @@
-venv/**
-.vscode/**
-__pycache__/**
-app/__pycache__/**
-./translate_service_account.json
+# Virtual environment
+venv/
+
+# VS Code
+.vscode/
+
+# Python cache
+__pycache__/
+
+# App-level cache (optional, already covered above)
+app/__pycache__/
+
+# Secrets
+translate_service_account.json
