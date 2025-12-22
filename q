@@ -1,10 +1,34 @@
-[33mcommit ccce878638603ca5780245e3efde7208bfbdf6bd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+[33mcommit 5e9be91599da3ab6260697b5e1315fe058bcaeb8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Anish <anish31442@gmail.com>
+Date:   Mon Dec 22 11:06:45 2025 +0530
+
+    removed venv from version control
+
+[33mcommit 7ef8b19245721f9174a15c55c7afe625523b5bf8[m
+Author: Anish <anish31442@gmail.com>
+Date:   Mon Dec 22 11:04:37 2025 +0530
+
+    changes in format of gitinore
+
+[33mcommit 2fd270ca333270dabe81e5df808fd5af77187731[m
+Author: Anish <anish31442@gmail.com>
+Date:   Mon Dec 22 10:49:26 2025 +0530
+
+    added translation api key in gitignore
+
+[33mcommit 7161ebe254dd4a0a62948dcb7bf6bc92c99aa7ea[m
+Author: Anish <anish31442@gmail.com>
+Date:   Fri Dec 19 12:47:39 2025 +0530
+
+    updated requirements.txt
+
+[33mcommit ccce878638603ca5780245e3efde7208bfbdf6bd[m
 Author: Anish <anish31442@gmail.com>
 Date:   Fri Dec 19 10:33:36 2025 +0530
 
     added the search form and search.html
 
-[33mcommit 2a03be48fa79bc38dc69c07c9e3ed80b27ddf5c1[m[33m ([m[1;31morigin/main[m[33m)[m
+[33mcommit 2a03be48fa79bc38dc69c07c9e3ed80b27ddf5c1[m
 Author: Anish <anish31442@gmail.com>
 Date:   Thu Dec 18 16:13:28 2025 +0530
 
