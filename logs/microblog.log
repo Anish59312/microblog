@@ -1,114 +1,90 @@
-2025-12-17 17:30:06,670 ERROR: Exception on /index [GET] [in /home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+2025-12-22 07:12:11,591 ERROR: Exception on /auth/login [POST] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 285, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 196, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2025-12-17 17:30:21,385 ERROR: Exception on /index [GET] [in /home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+  File "/home/ubuntu/microblog/app/auth/routes.py", line 19, in login
+    if user is None or not user.check_password(form.password.data):
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/models.py", line 42, in check_password
+    return check_password_hash(self.password_hash, password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/werkzeug/security.py", line 135, in check_password_hash
+    method, salt, hashval = pwhash.split("$", 2)
+                            ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+2025-12-22 07:14:12,364 ERROR: Exception on /auth/login [POST] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 285, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 196, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2025-12-17 17:31:07,973 ERROR: Exception on /index [GET] [in /home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+  File "/home/ubuntu/microblog/app/auth/routes.py", line 19, in login
+    if user is None or not user.check_password(form.password.data):
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/models.py", line 42, in check_password
+    return check_password_hash(self.password_hash, password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/werkzeug/security.py", line 135, in check_password_hash
+    method, salt, hashval = pwhash.split("$", 2)
+                            ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+2025-12-23 09:51:15,879 ERROR: Exception on /messages [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 285, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 196, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 183, in messages
+    messages = current_user.messages_recieved.order_by(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'messages_recieved'. Did you mean: 'messages_received'?
+2025-12-23 09:51:39,121 ERROR: Exception on /messages [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 183, in messages
+    messages = current_user.messages_recieved.order_by(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'messages_recieved'. Did you mean: 'messages_received'?

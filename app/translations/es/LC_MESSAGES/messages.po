@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-17 18:01+0530\n"
-"PO-Revision-Date: 2025-12-17 17:59+0530\n"
+"POT-Creation-Date: 2025-12-23 09:44+0000\n"
+"PO-Revision-Date: 2025-12-23 15:00+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
 "Language-Team: es <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/__init__.py:18
+#: app/__init__.py:19
 msgid "please login to access this page"
 msgstr "por favor inicia sesión para acceder a esta página"
 
-#: app/translate.py:11 app/translate.py:21
+#: app/translate.py:9 app/translate.py:17
 msgid "Error: the translation service is down"
 msgstr "Error: el servicio de traducción no está disponible"
 
@@ -58,25 +58,49 @@ msgstr "Vuelve a ingresar la contraseña"
 msgid "Sign Up"
 msgstr "Registrarse"
 
-#: app/main/routes.py:16
+#: app/main/forms.py:34 app/main/routes.py:153
+msgid "Search"
+msgstr "Buscar"
+
+#: app/main/forms.py:44
+msgid "Message"
+msgstr "Mensaje"
+
+#: app/main/forms.py:45
+msgid "Submit"
+msgstr "Enviar"
+
+#: app/main/routes.py:26
 msgid "Your Translation is working"
 msgstr "Tu traducción está funcionando"
 
-#: app/main/routes.py:97
+#: app/main/routes.py:99
 #, python-brace-format
 msgid "User %{username}s not found"
 msgstr "Usuario %{username}s no encontrado"
 
-#: app/templates/_post.html:14
+#: app/main/routes.py:173
+msgid "Your message has been sent."
+msgstr "Tu mensaje ha sido enviado."
+
+#: app/main/routes.py:175
+msgid "Send Message"
+msgstr "Enviar mensaje"
+
+#: app/templates/_post.html:16
 #, python-format
 msgid "%(username)s said %(when)s"
 msgstr "%(username)s dijo %(when)s"
 
-#: app/templates/_post.html:29
+#: app/templates/_post.html:31
 msgid "Translate"
 msgstr "Traducir"
 
-#: app/templates/base.html:84
+#: app/templates/base.html:87
+msgid "Messages"
+msgstr "Mensajes"
+
+#: app/templates/base.html:131
 msgid "Error: Could not contact server."
 msgstr "Error: no se pudo contactar con el servidor."
 
@@ -85,6 +109,27 @@ msgstr "Error: no se pudo contactar con el servidor."
 msgid "hi, %(username)s"
 msgstr "hola, %(username)s"
 
+#: app/templates/send_message.html:5
+#, python-format
+msgid "Send message to %(recipient)s"
+msgstr "Enviar mensaje a %(recipient)s"
+
+#: app/templates/user.html:40
+msgid "Send private message"
+msgstr "Enviar mensaje privado"
+
+#: app/templates/user_popup.html:10
+msgid "Last seen on: "
+msgstr "Visto por última vez: "
+
+#: app/templates/user_popup.html:16
+msgid "Follow"
+msgstr "Seguir"
+
+#: app/templates/user_popup.html:23
+msgid "UnFollow"
+msgstr "Dejar de seguir"
+
 #: app/templates/errors/404.html:4
 msgid "File Not Found"
 msgstr "Archivo no encontrado"
@@ -92,4 +137,3 @@ msgstr "Archivo no encontrado"
 #: app/templates/errors/404.html:5
 msgid "Back"
 msgstr "Volver"
-

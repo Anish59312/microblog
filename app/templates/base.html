@@ -83,6 +83,14 @@
               >
             </li>
             <li class="nav-item">
+              <a 
+                class="nav-link"
+                aria-current="page"
+                href="{{ url_for('main.messages') }}">
+                {{ _('Messages') }}
+              </a>
+            </li>
+            <li class="nav-item">
               <a
                 class="nav-link"
                 aria-current="page"
@@ -109,6 +117,7 @@
     <!-- js script for moment -->
     {{ moment.include_moment() }} {{ moment.lang(g.locale) }}
 
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
       function translate(sourceElem, destElem, sourceLang, destLang) {
@@ -125,6 +134,57 @@
             $(destElem).text("{{ _('Error: Could not contact server.') }}");
           });
       }
+    </script>
+    <script>
+      $(function () {
+        var timer = null;
+        var xhr = null;
+        $('.user_popup').hover(
+          function(event) {
+            console.log('inside hover')
+
+            var elem = $(event.currentTarget);
+            timer = setTimeout(function() {
+              timer = null
+              xhr = $.ajax(
+                '/user/' + elem.first().text().trim() + '/popup'
+              ).done(
+                function(data) {
+                  xhr = null;
+                  console.log('inside done')
+                  elem.popover({
+                    trigger: 'manual',
+                    html: true,
+                    animation: false,
+                    container: elem,
+                    sanitize: false, // sanitization removes forms as they are not supported in popovers //TODO: find a solution to render forms in popovers
+                    content: data,
+                    html: true
+                  }).popover('show');
+                  flask_moment_render_all();
+                  console.log($('.popover-body').children().length);
+                }
+              )
+            }, 1000)
+          }
+        ,
+        function(event) {
+          console.log('destoryed')
+          var elem = $(event.currentTarget);
+          if (timer) {
+            clearTimeout(timer)
+            timer = null
+          } 
+          else if (xhr) {
+            xhr.abort();
+            xhr = null;
+          }
+          else {
+            elem.popover('dispose')
+          }
+        }
+        )
+      })
     </script>
   </body>
 </html>

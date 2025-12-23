@@ -12,3 +12,5 @@ app/__pycache__/
 
 # Secrets
 translate_service_account.json
+
+migrations/

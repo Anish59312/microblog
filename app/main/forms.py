@@ -35,8 +35,12 @@ class SearchForm(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         if 'formdata' not in kwargs:
-            print('--------------------------',request, request.__dir__())
             kwargs['formdata'] = request.args
         if 'meta' not in kwargs:
             kwargs['meta'] = {'csrf': False}
         super(SearchForm, self).__init__(*args, **kwargs)
+
+class MessageForm(FlaskForm):
+    message = TextAreaField(_l('Message'), validators=[DataRequired(), Length(min=0, max=140)])
+    submit = SubmitField(_l('Submit'))
+    

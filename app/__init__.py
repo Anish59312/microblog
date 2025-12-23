@@ -67,12 +67,6 @@ def create_app(config_class=Config):
                 credentials=auth, secure=secure)
             mail_handler.setLevel(logging.ERROR)
             app.logger.addHandler(mail_handler)
-        
-            with app.app_context():
-                msg = Message('test mail', sender=app.config['ADMINS'][0], recipients=['test@localhost'])
-                msg.body='your mailing system is started'
-                msg.html='<h1>congratulations</h1>'
-                mail.send(msg)
 
         # SETUP LOGGING
 
@@ -86,7 +80,6 @@ def create_app(config_class=Config):
 
         app.logger.setLevel(logging.INFO)
         app.logger.info('Microblog startup')
-
 
     return app
 

@@ -5,7 +5,6 @@ from flask import current_app
 # note this funciton don't make any use source_lanague variable
 def translate_api(text, source_language='en', dest_language='en'):
 
-
     if current_app.config['TRANSLATION_KEY_JSON'] is None:
         return _('Error: the translation service is down')
 
@@ -13,6 +12,7 @@ def translate_api(text, source_language='en', dest_language='en'):
 
         client = translate.Client.from_service_account_json(current_app.config['TRANSLATION_KEY_JSON'])
         result = client.translate(text, target_language=dest_language)
+
     except:
         return _('Error: the translation service is down')
     

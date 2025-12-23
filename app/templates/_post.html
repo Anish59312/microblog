@@ -7,9 +7,11 @@
     </td>
     <td>
       {% set user_link %}
-      <a href="{{ url_for('main.user', username=post.author.username) }}">
-        {{ post.author.username }}
-      </a>
+      <span class="user_popup">
+        <a href="{{ url_for('main.user', username=post.author.username) }}" >
+          {{ post.author.username }}
+        </a>
+      </span>
       {% endset %}
       {{ _('%(username)s said %(when)s',
       username=user_link, when=moment(post.timestamp).fromNow())}}
@@ -31,4 +33,5 @@
       {% endif %}
     </td>
   </tr>
+  <!-- <tr><small><button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button></small></tr> -->
 </table>

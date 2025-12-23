@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-17 18:01+0530\n"
-"PO-Revision-Date: 2025-12-16 12:49+0530\n"
+"POT-Creation-Date: 2025-12-23 09:44+0000\n"
+"PO-Revision-Date: 2025-12-23 15:15+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: hi\n"
 "Language-Team: hi <LL@li.org>\n"
@@ -18,18 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/__init__.py:18
+#: app/__init__.py:19
 msgid "please login to access this page"
-msgstr ""
+msgstr "इस पेज तक पहुँचने के लिए कृपया लॉग इन करें"
 
-#: app/translate.py:11 app/translate.py:21
-#, fuzzy
+#: app/translate.py:9 app/translate.py:17
 msgid "Error: the translation service is down"
-msgstr "आपका अनुवाद काम कर रहा है"
+msgstr "त्रुटि: अनुवाद सेवा उपलब्ध नहीं है"
 
 #: app/auth/emails.py:8
 msgid "[MICROBLOG] Reset Your Password"
-msgstr ""
+msgstr "[MICROBLOG] अपना पासवर्ड रीसेट करें"
 
 #: app/auth/forms.py:8 app/auth/forms.py:15
 msgid "Username"
@@ -37,54 +36,99 @@ msgstr "उपयोगकर्ता नाम"
 
 #: app/auth/forms.py:9 app/auth/forms.py:17
 msgid "Password"
-msgstr ""
+msgstr "पासवर्ड"
 
 #: app/auth/forms.py:10
 msgid "Remember Me"
-msgstr ""
+msgstr "मुझे याद रखें"
 
 #: app/auth/forms.py:11
 msgid "Sign In"
-msgstr ""
+msgstr "लॉग इन करें"
 
 #: app/auth/forms.py:16
 msgid "Email"
-msgstr ""
+msgstr "ईमेल"
 
 #: app/auth/forms.py:18
 msgid "Reenter Password"
-msgstr ""
+msgstr "पासवर्ड दोबारा दर्ज करें"
 
 #: app/auth/forms.py:19
 msgid "Sign Up"
-msgstr ""
+msgstr "साइन अप करें"
 
-#: app/main/routes.py:16
+#: app/main/forms.py:34 app/main/routes.py:153
+msgid "Search"
+msgstr "खोजें"
+
+#: app/main/forms.py:44
+msgid "Message"
+msgstr "संदेश"
+
+#: app/main/forms.py:45
+msgid "Submit"
+msgstr "भेजें"
+
+#: app/main/routes.py:26
 msgid "Your Translation is working"
 msgstr "आपका अनुवाद काम कर रहा है"
 
-#: app/main/routes.py:97
+#: app/main/routes.py:99
 #, python-brace-format
 msgid "User %{username}s not found"
 msgstr "उपयोगकर्ता %{username}s नहीं मिला"
 
-#: app/templates/_post.html:14
+#: app/main/routes.py:173
+msgid "Your message has been sent."
+msgstr "आपका संदेश भेज दिया गया है।"
+
+#: app/main/routes.py:175
+msgid "Send Message"
+msgstr "संदेश भेजें"
+
+#: app/templates/_post.html:16
 #, python-format
 msgid "%(username)s said %(when)s"
 msgstr "%(username)s ने %(when)s कहा"
 
-#: app/templates/_post.html:29
+#: app/templates/_post.html:31
 msgid "Translate"
-msgstr ""
+msgstr "अनुवाद करें"
 
-#: app/templates/base.html:84
+#: app/templates/base.html:87
+msgid "Messages"
+msgstr "संदेश"
+
+#: app/templates/base.html:131
 msgid "Error: Could not contact server."
-msgstr ""
+msgstr "त्रुटि: सर्वर से संपर्क नहीं हो सका।"
 
 #: app/templates/index.html:4
 #, python-format
 msgid "hi, %(username)s"
 msgstr "नमस्ते, %(username)s"
+
+#: app/templates/send_message.html:5
+#, python-format
+msgid "Send message to %(recipient)s"
+msgstr "%(recipient)s को संदेश भेजें"
+
+#: app/templates/user.html:40
+msgid "Send private message"
+msgstr "निजी संदेश भेजें"
+
+#: app/templates/user_popup.html:10
+msgid "Last seen on: "
+msgstr "अंतिम बार देखा गया: "
+
+#: app/templates/user_popup.html:16
+msgid "Follow"
+msgstr "फ़ॉलो करें"
+
+#: app/templates/user_popup.html:23
+msgid "UnFollow"
+msgstr "अनफ़ॉलो करें"
 
 #: app/templates/errors/404.html:4
 msgid "File Not Found"
@@ -93,4 +137,3 @@ msgstr "फ़ाइल नहीं मिली"
 #: app/templates/errors/404.html:5
 msgid "Back"
 msgstr "वापस जाएँ"
-
