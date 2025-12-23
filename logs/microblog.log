@@ -1,52 +1,4 @@
-2025-12-22 07:12:11,591 ERROR: Exception on /auth/login [POST] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
-Traceback (most recent call last):
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/app/auth/routes.py", line 19, in login
-    if user is None or not user.check_password(form.password.data):
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/app/models.py", line 42, in check_password
-    return check_password_hash(self.password_hash, password)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/werkzeug/security.py", line 135, in check_password_hash
-    method, salt, hashval = pwhash.split("$", 2)
-                            ^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'split'
-2025-12-22 07:14:12,364 ERROR: Exception on /auth/login [POST] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
-Traceback (most recent call last):
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/app/auth/routes.py", line 19, in login
-    if user is None or not user.check_password(form.password.data):
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/app/models.py", line 42, in check_password
-    return check_password_hash(self.password_hash, password)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/werkzeug/security.py", line 135, in check_password_hash
-    method, salt, hashval = pwhash.split("$", 2)
-                            ^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'split'
-2025-12-23 09:51:15,879 ERROR: Exception on /messages [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+2025-12-23 12:52:30,056 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
   File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -63,11 +15,11 @@ Traceback (most recent call last):
   File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/app/main/routes.py", line 183, in messages
-    messages = current_user.messages_recieved.order_by(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'User' object has no attribute 'messages_recieved'. Did you mean: 'messages_received'?
-2025-12-23 09:51:39,121 ERROR: Exception on /messages [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user._get.username )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'
+2025-12-23 12:52:31,865 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
   File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
@@ -84,7 +36,49 @@ Traceback (most recent call last):
   File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ubuntu/microblog/app/main/routes.py", line 183, in messages
-    messages = current_user.messages_recieved.order_by(
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'User' object has no attribute 'messages_recieved'. Did you mean: 'messages_received'?
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user._get.username )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'
+2025-12-23 12:52:35,058 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user._get.username )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'
+2025-12-23 12:52:36,867 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user._get_current_object().username )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'

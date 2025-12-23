@@ -1,114 +1,126 @@
-2025-12-17 17:30:06,670 ERROR: Exception on /index [GET] [in /home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+2025-12-23 12:52:00,061 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 285, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 196, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2025-12-17 17:30:21,385 ERROR: Exception on /index [GET] [in /home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user.name )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'
+2025-12-23 12:52:01,867 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 285, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 196, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
-2025-12-17 17:31:07,973 ERROR: Exception on /index [GET] [in /home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user.name )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'
+2025-12-23 12:52:05,060 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
 Traceback (most recent call last):
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 285, in decorated_view
-    return current_app.login_manager.unauthorized()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/login_manager.py", line 196, in unauthorized
-    redirect_url = make_login_url(login_view, next_url=request.url)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 120, in login_url
-    base = expand_login_view(login_view)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 97, in expand_login_view
-    return url_for(login_view)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/anish/Desktop/Company/microblog/venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'login'. Did you mean 'auth.login' instead?
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user.username )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'
+2025-12-23 12:52:06,866 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user.username )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'
+2025-12-23 12:52:10,061 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user.username )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'
+2025-12-23 12:52:11,870 ERROR: Exception on /notification [GET] [in /home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/microblog/app/main/routes.py", line 209, in notifications
+    print("_________Notification Route - since value", since, "current_user", current_user.username )
+                                                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'name'

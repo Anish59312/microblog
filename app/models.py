@@ -83,6 +83,8 @@ class User(UserMixin, db.Model):
     def new_messages(self):
         last_read_time = self.last_message_read_time or datetime(1900,1,1)
 
+        print("______LAST READ TIME", last_read_time, "_____SELF.LAST_MESSAGE_READ_TIME", self.last_message_read_time)
+
         return Message.query.filter_by(recipient=self).filter(Message.timestamp > last_read_time).count()
     
     def add_notification(self, name, data):
