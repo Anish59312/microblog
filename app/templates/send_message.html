@@ -5,7 +5,7 @@
     <h1>{{ _('Send message to %(recipient)s', recipient=recipient) }}</h1>
     <div class="row">
         <div clas="col-md-4">
-            {{ wtf.quick_form(form) }}
+            {{ wtf.quick_form(form, button_map={'submit': 'light'}) }}
         </div>
     </div>
 {% endblock %}

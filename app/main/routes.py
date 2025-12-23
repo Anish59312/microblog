@@ -23,7 +23,6 @@ def before_request():
 @bp.route('/index', methods=["GET", "POST"])
 @login_required
 def index():
-    flash(_('Your Translation is working'))
 
     form = PostForm()
     if form.validate_on_submit():

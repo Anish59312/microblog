@@ -88,6 +88,10 @@
                 aria-current="page"
                 href="{{ url_for('main.messages') }}">
                 {{ _('Messages') }}
+                {% set new_messages = current_user.new_messages() %}
+                {% if new_messages %}
+                <span id="message_count" class="badge bg-secondary rounded-pill" style=`visibility: {% if new_messages %} visible {% else %} hidden {% endif %};`>{{ new_messages }}</span>
+                {% endif %}
               </a>
             </li>
             <li class="nav-item">
@@ -185,6 +189,15 @@
         }
         )
       })
+    </script>
+
+    <script>
+      // function to set messages count
+
+      function set_message_count(n) {
+        $('#message_count').text(n);
+        $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+      }
     </script>
   </body>
 </html>
