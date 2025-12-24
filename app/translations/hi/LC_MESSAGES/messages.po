@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-23 09:44+0000\n"
+"POT-Creation-Date: 2025-12-24 09:49+0000\n"
 "PO-Revision-Date: 2025-12-23 15:15+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: hi\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/__init__.py:19
+#: app/__init__.py:21
 msgid "please login to access this page"
 msgstr "इस पेज तक पहुँचने के लिए कृपया लॉग इन करें"
 
@@ -58,7 +58,7 @@ msgstr "पासवर्ड दोबारा दर्ज करें"
 msgid "Sign Up"
 msgstr "साइन अप करें"
 
-#: app/main/forms.py:34 app/main/routes.py:153
+#: app/main/forms.py:34 app/main/routes.py:152
 msgid "Search"
 msgstr "खोजें"
 
@@ -70,22 +70,26 @@ msgstr "संदेश"
 msgid "Submit"
 msgstr "भेजें"
 
-#: app/main/routes.py:26
-msgid "Your Translation is working"
-msgstr "आपका अनुवाद काम कर रहा है"
-
-#: app/main/routes.py:99
+#: app/main/routes.py:98
 #, python-brace-format
 msgid "User %{username}s not found"
 msgstr "उपयोगकर्ता %{username}s नहीं मिला"
 
-#: app/main/routes.py:173
+#: app/main/routes.py:175
 msgid "Your message has been sent."
 msgstr "आपका संदेश भेज दिया गया है।"
 
-#: app/main/routes.py:175
+#: app/main/routes.py:178
 msgid "Send Message"
 msgstr "संदेश भेजें"
+
+#: app/main/routes.py:215
+msgid "An export task is currently in progress"
+msgstr ""
+
+#: app/main/routes.py:217
+msgid "Exporting posts...."
+msgstr ""
 
 #: app/templates/_post.html:16
 #, python-format
@@ -96,11 +100,11 @@ msgstr "%(username)s ने %(when)s कहा"
 msgid "Translate"
 msgstr "अनुवाद करें"
 
-#: app/templates/base.html:87
+#: app/templates/base.html:90 app/templates/messages.html:5
 msgid "Messages"
 msgstr "संदेश"
 
-#: app/templates/base.html:131
+#: app/templates/base.html:135
 msgid "Error: Could not contact server."
 msgstr "त्रुटि: सर्वर से संपर्क नहीं हो सका।"
 
@@ -113,10 +117,6 @@ msgstr "नमस्ते, %(username)s"
 #, python-format
 msgid "Send message to %(recipient)s"
 msgstr "%(recipient)s को संदेश भेजें"
-
-#: app/templates/user.html:40
-msgid "Send private message"
-msgstr "निजी संदेश भेजें"
 
 #: app/templates/user_popup.html:10
 msgid "Last seen on: "
@@ -137,3 +137,10 @@ msgstr "फ़ाइल नहीं मिली"
 #: app/templates/errors/404.html:5
 msgid "Back"
 msgstr "वापस जाएँ"
+
+#~ msgid "Your Translation is working"
+#~ msgstr "आपका अनुवाद काम कर रहा है"
+
+#~ msgid "Send private message"
+#~ msgstr "निजी संदेश भेजें"
+

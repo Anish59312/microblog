@@ -14,7 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link href="../templates/css/global.css" rel="stylesheet" />
+    <link href="./templates/css/global.css" rel="stylesheet" />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -104,7 +104,24 @@
         </div>
       </div>
     </nav>
+  
+    
     <div class="container mt-3">
+
+    {% if current_user.is_authenticated %}
+    {% with tasks = current_user.get_tasks_in_progress() %}
+      {% if tasks %}
+        {% for task in tasks %}
+          <div class="alert alert-success" role="alert">
+            {{ task.description }}
+            <span id="progress-{{ task.id }}">{{ task.get_progress() }}</span>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% endif %}
+
+
       {% with messages = get_flashed_messages() %} {% if messages %} {% for
       message in messages %}
       <div class="alert alert-info" role="alert">{{ message }}</div>
@@ -193,23 +210,35 @@
         
       }
 
-      // {% if current_user.is_authenticated %}
+      function set_task_progress(task_id, progress){
+        $('#' + 'progress-' + task_id).text(progress)
+      }
+
+      {% if current_user.is_authenticated %}
         $(function() {
           var since = 0;
           setInterval(function() {
             $.ajax('{{ url_for("main.notifications") }}?since=' + since).done(
               function(notifications) {
                 for (var i = 0; i < notifications.length; i++) {
-                  if (notifications[i].name == 'unread_message_count')
-                    set_message_count(notifications[i].data);
-
+                  switch(notifications[i].name) {
+                    case 'unread_message_count':
+                        set_message_count(notifications[i].data);
+                        break;
+                    case 'task_progress':
+                        set_task_progress(notifications[i].data.task_id, notifications[i].data.progress);
+                        break;
+                  }
                   since = notifications[i].timestamp
                 }
               }
             )
           }, 5000)
         })
-      // {% endif %}
+      {% endif %}
+    </script>
+    <script>
+    
     </script>
 
 

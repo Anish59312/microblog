@@ -23,6 +23,8 @@ class Config(object):
     TRANSLATION_KEY_JSON = './translate_service_account.json'
 
     ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+
+    REDIS_URL= os.environ.get('REDIS_URL') or 'redis://'
     
 
     

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-23 09:44+0000\n"
+"POT-Creation-Date: 2025-12-24 09:49+0000\n"
 "PO-Revision-Date: 2025-12-23 15:05+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/__init__.py:19
+#: app/__init__.py:21
 msgid "please login to access this page"
 msgstr "veuillez vous connecter pour accéder à cette page"
 
@@ -58,7 +58,7 @@ msgstr "Saisissez à nouveau le mot de passe"
 msgid "Sign Up"
 msgstr "S’inscrire"
 
-#: app/main/forms.py:34 app/main/routes.py:153
+#: app/main/forms.py:34 app/main/routes.py:152
 msgid "Search"
 msgstr "Rechercher"
 
@@ -70,22 +70,26 @@ msgstr "Message"
 msgid "Submit"
 msgstr "Envoyer"
 
-#: app/main/routes.py:26
-msgid "Your Translation is working"
-msgstr "Votre traduction fonctionne"
-
-#: app/main/routes.py:99
+#: app/main/routes.py:98
 #, python-brace-format
 msgid "User %{username}s not found"
 msgstr "Utilisateur %{username}s introuvable"
 
-#: app/main/routes.py:173
+#: app/main/routes.py:175
 msgid "Your message has been sent."
 msgstr "Votre message a été envoyé."
 
-#: app/main/routes.py:175
+#: app/main/routes.py:178
 msgid "Send Message"
 msgstr "Envoyer un message"
+
+#: app/main/routes.py:215
+msgid "An export task is currently in progress"
+msgstr ""
+
+#: app/main/routes.py:217
+msgid "Exporting posts...."
+msgstr ""
 
 #: app/templates/_post.html:16
 #, python-format
@@ -96,11 +100,11 @@ msgstr "%(username)s a dit %(when)s"
 msgid "Translate"
 msgstr "Traduire"
 
-#: app/templates/base.html:87
+#: app/templates/base.html:90 app/templates/messages.html:5
 msgid "Messages"
 msgstr "Messages"
 
-#: app/templates/base.html:131
+#: app/templates/base.html:135
 msgid "Error: Could not contact server."
 msgstr "Erreur : impossible de contacter le serveur."
 
@@ -113,10 +117,6 @@ msgstr "bonjour, %(username)s"
 #, python-format
 msgid "Send message to %(recipient)s"
 msgstr "Envoyer un message à %(recipient)s"
-
-#: app/templates/user.html:40
-msgid "Send private message"
-msgstr "Envoyer un message privé"
 
 #: app/templates/user_popup.html:10
 msgid "Last seen on: "
@@ -137,3 +137,10 @@ msgstr "Fichier introuvable"
 #: app/templates/errors/404.html:5
 msgid "Back"
 msgstr "Retour"
+
+#~ msgid "Your Translation is working"
+#~ msgstr "Votre traduction fonctionne"
+
+#~ msgid "Send private message"
+#~ msgstr "Envoyer un message privé"
+

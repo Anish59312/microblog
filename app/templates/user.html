@@ -16,9 +16,19 @@
                    Last seen on: <span class="text-success">{{ moment(user.last_seen).calendar() }} </span>
                 {% endif %}
                 </p>
-                <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
+                <p>
+                {{ _('%(followers)d followers, %(following)d following.',
+                    followers=user.followers.count(),
+                    following=user.followed.count()) }}
+                </p>                
+                
                 {% if user == current_user %}
-                <p><a href="{{ url_for('main.edit_profile') }}">Edit your profile</a></p>
+                <p><a href="{{ url_for('main.edit_profile') }}">{{_('Edit your profile')}}</a></p>
+
+                {% if not current_user.get_task_in_progress('export_posts') %}
+                <p><a href="{{ url_for('main.export_posts') }}">{{_('Export your posts')}}</a></p>
+                {% endif %}
+
                 {% elif not current_user.is_following(user) %}
                 <p>
                     <form action="{{ url_for('main.follow',username=user.username) }}" method="post">
@@ -50,7 +60,7 @@
     {% endfor %}
  
     {% if prev_url %}
-    <a href="{{prev_url}}">Newer Posts                            </a>
+    <a href="{{prev_url}}">Newer Posts</a>
     &nbsp;
     {% endif %}
       {% if next_url %}
