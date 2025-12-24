@@ -169,14 +169,11 @@ def send_message(recipient):
         msg = Message(author=current_user, recipient=user, body=form.message.data)
         db.session.add(msg)
         db.session.commit()
-        print("___________NEWLY ADDED MESSAGE", msg, ' timestamp', msg.timestamp, "count of new message to recipient", user.new_messages())
         user.add_notification('unread_message_count', user.new_messages())
         db.session.commit()
-        # print("___________Notifications", Notification.query.all())
-        notifications = Notification.query.all()
-        # for n in notifications:
-            # print("____________________notification ", n.name, "data", n.get_data())
+
         flash(_('Your message has been sent.'))
+
         return redirect(url_for('main.user', username=recipient))
     return render_template('send_message.html', title=_('Send Message'), form=form, recipient=recipient)
 
@@ -184,16 +181,9 @@ def send_message(recipient):
 @login_required
 def messages():
     current_user.last_message_read_time = datetime.now(timezone.utc)
-
-    print("_________ MESSAGES ROUTE -- CURRENT USER LAST MESSAGE READ TIME ", current_user.last_message_read_time )
-
     current_user.add_notification('unread_message_count', 0)
     db.session.commit()
-    print("___________Messages Route - Notifications", Notification.query.all())
-    notifications = Notification.query.all()
-    for n in notifications:
-        print("____________________notification ", n.name, "data", n.get_data(), "timestamp", n.timestamp)
-
+    
     page = request.args.get('page', 1, type=int)
     messages = current_user.messages_received.order_by(
         Message.timestamp.desc()
@@ -210,10 +200,7 @@ def messages():
 @login_required
 def notifications():
     since = request.args.get('since', 0.0, type=float)
-    print("_________Notification Route - since value", since, "current_user", current_user._get_current_object().username )
-    notifications = current_user.notifications.filter(
-        Notification.timestamp > since
-    ).order_by(Notification.timestamp.asc())
+    notifications = current_user.notifications.filter(Notification.timestamp > since).order_by(Notification.timestamp.asc())
 
     return jsonify([{
         'name': n.name,

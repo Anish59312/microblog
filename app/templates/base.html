@@ -88,10 +88,7 @@
                 aria-current="page"
                 href="{{ url_for('main.messages') }}">
                 {{ _('Messages') }}
-                {% set new_messages = current_user.new_messages() %}
-                {% if new_messages %}
-                <span id="message_count" class="badge bg-secondary rounded-pill" style=`visibility: {% if new_messages %} visible {% else %} hidden {% endif %};`>{{ new_messages }}</span>
-                {% endif %}
+                <span id="message_count" class="badge bg-secondary rounded-pill" style='display: {% if current_user.new_messages() %} inline-block {% else %} none {% endif %};'>{{ current_user.new_messages() }}</span>
               </a>
             </li>
             <li class="nav-item">
@@ -145,7 +142,6 @@
         var xhr = null;
         $('.user_popup').hover(
           function(event) {
-            console.log('inside hover')
 
             var elem = $(event.currentTarget);
             timer = setTimeout(function() {
@@ -155,7 +151,6 @@
               ).done(
                 function(data) {
                   xhr = null;
-                  console.log('inside done')
                   elem.popover({
                     trigger: 'manual',
                     html: true,
@@ -166,14 +161,12 @@
                     html: true
                   }).popover('show');
                   flask_moment_render_all();
-                  console.log($('.popover-body').children().length);
                 }
               )
             }, 1000)
           }
         ,
         function(event) {
-          console.log('destoryed')
           var elem = $(event.currentTarget);
           if (timer) {
             clearTimeout(timer)
@@ -196,7 +189,8 @@
 
       function set_message_count(n) {
         $('#message_count').text(n);
-        $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+        $('#message_count').css('display', n ? 'inline-block' : 'none');
+        
       }
 
       // {% if current_user.is_authenticated %}

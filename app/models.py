@@ -22,7 +22,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(32), index=True, unique=True)
     password_hash = db.Column(db.String(512))
     about_me = db.Column(db.String(140))
-    last_seen = db.Column(db.DateTime, default=datetime.now(timezone.utc))
+    last_seen = db.Column(db.DateTime, default=datetime.now)
     posts = db.relationship("Post", backref="author", lazy="dynamic")
     notifications = db.relationship('Notification', backref='user', lazy='dynamic')
 
@@ -82,9 +82,6 @@ class User(UserMixin, db.Model):
     
     def new_messages(self):
         last_read_time = self.last_message_read_time or datetime(1900,1,1)
-
-        print("______LAST READ TIME", last_read_time, "_____SELF.LAST_MESSAGE_READ_TIME", self.last_message_read_time)
-
         return Message.query.filter_by(recipient=self).filter(Message.timestamp > last_read_time).count()
     
     def add_notification(self, name, data):
@@ -157,7 +154,7 @@ class Post(SearchableMixin, db.Model):
     __searchable__ = ['body']
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(120))
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.now(timezone.utc))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     language = db.Column(db.String(5))
     
@@ -174,7 +171,7 @@ class Message(db.Model):
     sender_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     recipient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     body = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.now(timezone.utc))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.now)
 
     def __repr__(self):
         return f'<Message {self.body}>'
@@ -187,7 +184,7 @@ class Notification(db.Model):
     payload_json = db.Column(db.Text)
 
     def get_data(self):
-        return json.loads(str(self.payload_json))
+        return json.loads((self.payload_json))
     
     def __repr__(self):
         return f'<Notification {self.name}>'
